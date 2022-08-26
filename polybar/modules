@@ -247,12 +247,12 @@ type = internal/date
 
 interval = 1.0
 
-time = %I:%M %p
+time = %I:%M 
 time-alt = %A, %d %B %Y
 
 format = <label>
 #format-prefix = " "
-format-prefix-font = 3
+format-prefix-font = 2
 format-prefix-foreground = ${color.RED}
 
 label = %time%
@@ -275,6 +275,7 @@ format-online-prefix-foreground = ${color.GREEN}
 
 format-playing = ${self.format-online}
 format-paused = <label-song> <toggle>
+
 
 format-offline = <label-offline>
 format-offline-prefix = " "
@@ -345,7 +346,7 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
-label-connected = "%{A1:nmd &:}%essid%%{A}"
+label-connected = "%{A1:nmd &:}"
 label-disconnected = "%{A1:nmd &:}Disconnected%{A}"
 
 ramp-signal-0 = 
@@ -366,6 +367,52 @@ content =""
 content-background = ${color.BACKGROUND}
 content-foreground = ${color.BLACK}
 content-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/memory3]
+;https://github.com/jaagr/polybar/wiki/Module:~memory
+type =internal/memory
+interval = 1
+; Available tokens: 
+;   %percentaje_used% (default)
+;   %percentaje_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %gb_used%/%gb_free%
+
+format-prefix=""
+format = Mem <label>
+format-prefix-foreground = #3384d0
+format-underline = #3384d0
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+#helloWorld
+[module/spotify1]
+;https://github.com/NicholasFeldman/dotfiles/blob/master/polybar/.config/polybar/spotify.sh
+type = custom/script
+exec = ~/.config/bspwm/polybar/scripts/spotify1.sh
+interval = 1
+
+;format = <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-padding = 2
+format-underline = #0EC244
+format-prefix = " "
+format-prefix-foreground = #0EC244
+label = %output:0:150%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______

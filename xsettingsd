@@ -2,8 +2,8 @@
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 
 Net/ThemeName "Nordic"
-Net/IconThemeName "Zafiro"
-Gtk/CursorThemeName "Sweet"
+Net/IconThemeName "Nordic-Folders"
+Gtk/CursorThemeName "Qogirr"
 Xft/Hinting 1
 Xft/HintStyle "hintslight"
 Xft/Antialias 1
