@@ -51,8 +51,8 @@ font-3 = "Iosevka:style=bold:"size=12;3"
 
 
 modules-left = mod sep bspwm
-modules-center = spotify1 mpd#AQUI PONDRÉ EL MODULO DE SPOTIFY. 
-modules-right = volume sep backlight sep network sep battery sep date
+modules-center = spotify mpd#AQUI PONDRÉ EL MODULO DE SPOTIFY. 
+modules-right =  sep memory3 sep backlight sep network sep battery sep date
 
 separator =
 spacing = 0

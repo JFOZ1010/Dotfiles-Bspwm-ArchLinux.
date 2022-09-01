@@ -18,7 +18,11 @@ use-ui-max = false
 ; Default: 5
 interval = 5
 
-format-volume = <ramp-volume> <label-volume>
+#si deseo añadir porcentaje a format-volume
+#de la siguiente manera ->
+# format-volume = <ramp-volume> <label-volume>
+
+format-volume = <ramp-volume>
 
 format-muted = <label-muted>
 format-muted-prefix = 婢
@@ -26,7 +30,7 @@ format-muted-prefix-font = 2
 format-muted-prefix-foreground = ${color.RED}
 
 label-volume = %percentage%%
-label-muted = ""
+label-muted = " Mute"
 label-muted-foreground = #757575
 
 ramp-volume-0 = 奄
@@ -40,7 +44,7 @@ ramp-volume-7 = 墳
 ramp-volume-8 = 墳
 ramp-volume-9 = 墳
 ramp-volume-font = 2
-ramp-volume-foreground = ${color.BLUE}
+ramp-volume-foreground = #229954
 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
@@ -63,9 +67,11 @@ type = internal/xbacklight
 
 card = intel_backlight
 
-format = <ramp> <label>
+format = <ramp>
 
-label = %percentage%%
+#label = %percentage%% #solo si quiero porcentaje
+#para el brillo lo descomento y añado <label> en linea
+#66 -> format = <ramp> <label>
 
 ramp-0 = 
 ramp-1 = 
@@ -78,7 +84,8 @@ ramp-7 = 
 ramp-8 = 
 ramp-9 = 
 ramp-font = 2
-ramp-foreground = ${color.MAGENTA}
+ramp-foreground = #EBCB8B
+#F7DC6F
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -111,7 +118,7 @@ ramp-foreground = ${color.MAGENTA}
 [module/battery]
 type = internal/battery
 
-full-at = 99
+full-at = 100
 
 battery = ${system.sys_battery}
 adapter = ${system.sys_adapter}
@@ -126,8 +133,8 @@ format-discharging = <ramp-capacity> <label-discharging>
 
 format-full = <label-full>
 format-full-prefix = " "
-format-full-prefix-font = 2
-format-full-prefix-foreground = ${color.WHITE}
+format-full-prefix-font = 3
+format-full-prefix-foreground = #F8F9F9
 
 label-charging = %percentage%%
 label-discharging = %percentage%%
@@ -138,17 +145,17 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-font = 2
-ramp-capacity-foreground = ${color.YELLOW}
+ramp-capacity-font = 3
+ramp-capacity-foreground = #F8F9F9
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-font = 2
+animation-charging-font = 3
 animation-charging-foreground = ${color.GREEN}
-animation-charging-framerate = 750
+animation-charging-framerate = 950#750
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -193,13 +200,13 @@ label-monitor = %name%
 ;label-dimmed-focused-background = ${color.BACKGROUND}
 
 label-focused = %name%
-label-focused-foreground = ${color.BLUE}
+label-focused-foreground = ${color.WHITE}
 label-focused-background = ${color.BACKGROUND}
-label-focused-underline = ${color.BLUE}
+label-focused-underline = #E66B72
 label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-foreground = ${color.GREEN}
+label-occupied-foreground = #EBCB8B
 label-occupied-background = ${color.BACKGROUND}
 ;label-occupied-underline = ${color.GREEN}
 label-occupied-padding = 1
@@ -215,9 +222,9 @@ label-empty-foreground = ${color.FOREGROUND}
 label-empty-padding = 1
 
 ; Separator in between workspaces
-label-separator = " "
+label-separator = "∙"
 label-separator-padding = 0
-label-separator-foreground = ${color.ALTBLACK}
+label-separator-foreground = #222222
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -229,7 +236,7 @@ format-background = ${color.YELLOW}
 format-foreground = ${color.BACKGROUND}
 format-padding = 1
 
-label-monocle = " "
+label-monocle = ""
 label-tiled = ""
 
 label-floating = ""
@@ -247,12 +254,12 @@ type = internal/date
 
 interval = 1.0
 
-time = %I:%M 
-time-alt = %A, %d %B %Y
+time = %I:%M
+#time-alt = %A, %d %B %Y
 
 format = <label>
 #format-prefix = " "
-format-prefix-font = 2
+format-prefix-font = 3
 format-prefix-foreground = ${color.RED}
 
 label = %time%
@@ -275,7 +282,6 @@ format-online-prefix-foreground = ${color.GREEN}
 
 format-playing = ${self.format-online}
 format-paused = <label-song> <toggle>
-
 
 format-offline = <label-offline>
 format-offline-prefix = " "
@@ -315,7 +321,7 @@ unknown-as-up = true
 format-connected = <label-connected>
 format-connected-prefix = " "
 format-connected-prefix-font = 3
-format-connected-prefix-foreground = ${color.CYAN}
+format-connected-prefix-foreground = #5499C7
 
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = " "
@@ -323,7 +329,7 @@ format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
 label-connected = "%{A1:networkmanager_dmenu &:}%downspeed% | %upspeed%%{A}"
-label-disconnected = "%{A1:networkmanager_dmenu &:}Offline%{A}"
+label-disconnected = "%{A1:networkmanager_dmenu &:}%{A}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -346,8 +352,8 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
-label-connected = "%{A1:nmd &:}"
-label-disconnected = "%{A1:nmd &:}Disconnected%{A}"
+label-connected = "%{A1:nmd &:}%{A}"
+label-disconnected = "%{A1:nmd &:}%{A}"
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -355,28 +361,32 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-font = 3
-ramp-signal-foreground = ${color.CYAN}
+ramp-signal-foreground = #F4F6F7
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/sep]
-type = custom/text
-content ="" 
-#"⏽"
-
-content-background = ${color.BACKGROUND}
-content-foreground = ${color.BLACK}
-content-padding = 1
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format-prefix-foreground = #1db954
+format = <label>
+exec = python ~/.config/bspwm/polybar/scripts/spotify_status.py -f '{artist}: {song}'
+format-underline = #229954
+;control players (optional)
+click-left = playerctl --player=spotify play-pause 
+click-right = playerctl --player=spotify next 
+click-middle = playerctl --player=spotify previous 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/memory3]
-;https://github.com/jaagr/polybar/wiki/Module:~memory
-type =internal/memory
+;https://github.com/jaagr/polybar/wiki/Module:-memory
+type = internal/memory
 interval = 1
-; Available tokens: 
-;   %percentaje_used% (default)
-;   %percentaje_free%
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
 ;   %gb_used%
 ;   %gb_free%
 ;   %gb_total%
@@ -385,34 +395,22 @@ interval = 1
 ;   %mb_total%
 label = %gb_used%/%gb_free%
 
-format-prefix=""
-format = Mem <label>
-format-prefix-foreground = #3384d0
-format-underline = #3384d0
+format = <label>
+format-prefix = " "
+format-prefix-foreground = #BB5F67
+#format-underline = #212121
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-#helloWorld
-[module/spotify1]
-;https://github.com/NicholasFeldman/dotfiles/blob/master/polybar/.config/polybar/spotify.sh
-type = custom/script
-exec = ~/.config/bspwm/polybar/scripts/spotify1.sh
-interval = 1
+[module/sep]
+type = custom/text
+content = ""
 
-;format = <label>
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-padding = 2
-format-underline = #0EC244
-format-prefix = " "
-format-prefix-foreground = #0EC244
-label = %output:0:150%
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
+content-background = ${color.BACKGROUND}
+content-foreground = ${color.BLACK}
+content-padding = 2
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______
